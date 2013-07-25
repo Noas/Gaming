@@ -2,7 +2,7 @@ package com.gaming.managers {
 	
 	import caurina.transitions.properties.SoundShortcuts;
 	import caurina.transitions.Tweener;
-	import com.noas.settings.MouseSettings;
+	import com.gaming.settings.MouseSettings;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import flash.events.Event;

@@ -1,6 +1,6 @@
 ﻿package com.gaming.managers {
 	
-	import com.noas.settings.MouseSettings;
+	import com.gaming.settings.MouseSettings;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
