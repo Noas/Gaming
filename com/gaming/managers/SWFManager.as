@@ -1,84 +1,56 @@
 package com.gaming.managers {
 	
+	import com.gaming.core.Galery;
 	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.ProgressEvent;
 	import flash.net.URLRequest;
-	import flash.utils.Dictionary;
 	
 	/**
 	 * ...
 	 * @author Marcos Cardoso
 	 */
 	
-	public class SWFManager extends MovieClip {
+	public class SWFManager extends Galery {
 		
-		public static const LOAD_COMPLETE:String = "complete";
-		public static const PROGRESS:String = "progress";
-		
-		private var _progress:Number;
-		
-		private var swfLoaded:int = 0;
-		private var swfTotal:int;
-		private var list:Dictionary = new Dictionary();
-		
+		/**
+		 * Constructor
+		 */
 		public function SWFManager() {
 			super();
 		}
 		
+		/**
+		 * Loads the objects
+		 * @param	path
+		 * @param	names
+		 */
 		public function load(path:String, names:Array):void {
 			
-			swfTotal = names.length;
+			total = names.length;
 			
 			var loader:Loader;
 			
-			for (var i:uint = 0; i < swfTotal; i++) {
+			for (var i:uint = 0; i < total; i++) {
 				
 				loader = new Loader();
-				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, completeSWFHandler);
-				loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, progressSWFHandler);
+				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, completeHandler);
+				loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, progressHandler);
 				loader.load(new URLRequest(path + names[i] + ".swf"));
 				
-				list[names[i]] = loader;
+				galery[names[i]] = loader;
 			}
 		}
 		
-		private function progressSWFHandler(e:Event):void {
-			
-			_progress = Math.floor((e.target.bytesLoaded / e.target.bytesTotal) * 100);
-			
-			dispatchEvent(new Event(PROGRESS));
-		}
-		
-		private function completeSWFHandler(e:Event):void {
-			
-			swfLoaded++;
-			
-			if (swfTotal == swfLoaded)				
-				dispatchEvent(new Event(LOAD_COMPLETE));
-		}
-		
-		/* PUBLIC METHODS */
-		
+		/**
+		 * Returns a SWF through a name
+		 * @param	name	String
+		 * @return	SWF
+		 */
 		public function getSWFByName(name:String):MovieClip {
 			
-			return list[name].content;
-		}
-		
-		public function getList():Dictionary {
-			
-			return list;
-		}
-		
-		/* GETTERS E SETTERS */
-		
-		public function get progress():Number {
-			return _progress;
-		}
-		
-		public function set progress(value:Number):void {
-			_progress = value;
+			return galery[name].content;
 		}
 	}
 }

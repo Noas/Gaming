@@ -12,19 +12,17 @@ package com.gaming.managers {
 	public class SelfManager extends MovieClip {
 		
 		/**
-		 * Variável do tipo Number que guarda o progresso dos carregamentos
+		 * A Number that store the progress of the loading
 		 */
 		private var _progress:Number;
 		
 		/**
-		 * Utilizado para o registro do evento complete disparado quando 
-		 * o carregamento da aplicação é finalizado
+		 * Used to record of the complete event dispatched when the loading is finished
 		 */
 		public static const SELF_COMPLETE:String = "self_complete";
 		
 		/**
-		 * Utilizado para o registro do evento progress disparado enquanto 
-		 * o carregamento de algum dos assets está em andamento
+		 * Used to record of the progress event dispatched when the loading of any asset is in progress
 		 */
 		public static const PROGRESS:String = "progress";
 		
@@ -36,8 +34,8 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Função utilizada para o carregamento da aplicação em si
-		 * @param	container	Geralmente this que representa a aplicação a ser carregada
+		 * Loads the application itself
+		 * @param	container	Represents the application to be loaded
 		 */
 		public function loadGame(container:DisplayObjectContainer = null):void {
 			
@@ -45,8 +43,8 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Enterframe utilizado para checar o status do carregamento da aplicação
-		 * @param	e	Evento do tipo Event
+		 * Enterframe used to check the application's loading status
+		 * @param	e	Event
 		 */
 		private function loadingTheGame(e:Event):void {
 			
@@ -61,6 +59,9 @@ package com.gaming.managers {
 			dispatchEvent(new Event(PROGRESS));
 		}
 		
+		/**
+		 * Returns a number that represents the current loading progress
+		 */
 		public function get progress():Number {
 			return _progress;
 		}

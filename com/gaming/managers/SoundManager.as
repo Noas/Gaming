@@ -1,41 +1,39 @@
 ﻿package com.gaming.managers {
 	
+	import com.gaming.core.Galery;
 	import com.gaming.settings.MouseSettings;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
-	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.events.ProgressEvent;
 	import flash.media.Sound;
 	import flash.net.URLRequest;
-	import flash.utils.Dictionary;
 	
 	/**
 	 * ...
 	 * @author Marcos Cardoso
 	 */
 	
-	public class SoundManager extends Sprite {
-		
-		public static const LOAD_COMPLETE:String = "complete";
-		public static const PROGRESS:String = "progress";
-		
-		private var _progress:Number;
-		
-		private var soundLoaded:int = 0;
-		private var soundTotal:int;
-		private var playlist:Dictionary = new Dictionary();
+	public class SoundManager extends Galery {
 		
 		private var allowSound:Boolean = true;
 		private var container:MovieClip;
 		private var scope:DisplayObjectContainer;
 		
+		/**
+		 * Constructor
+		 */
 		public function SoundManager() { }
 		
+		/**
+		 * Loads the objects
+		 * @param	path
+		 * @param	names
+		 */
 		public function load(path:String, names:Array):void {
 			
-			soundTotal = names.length;
+			total = names.length;
 			
 			var sound:Sound;
 			
@@ -45,27 +43,14 @@
 				sound.addEventListener(ProgressEvent.PROGRESS, progressHandler);
 				sound.addEventListener(Event.COMPLETE, completeHandler);
 				
-				playlist[names[i]] = sound;
+				galery[names[i]] = sound;
 			}
 		}
 		
-		private function progressHandler(e:ProgressEvent):void {
-			
-			_progress = Math.floor((e.bytesLoaded / e.bytesTotal) * 100);
-			
-			dispatchEvent(new Event(PROGRESS));
-		}
-		
-		private function completeHandler(e:Event):void {
-			
-			soundLoaded++;
-			
-			if (soundTotal == soundLoaded)				
-				dispatchEvent(new Event(LOAD_COMPLETE));
-		}
-		
-		/* PUBLIC METHODS */
-		
+		/**
+		 * Informs the MovieClip that will be responsible for the manipulation of the sounds
+		 * @param	container
+		 */
 		public function setContainer(container:MovieClip):void {
 			
 			this.container = container;
@@ -75,6 +60,10 @@
 			container.addEventListener(MouseEvent.CLICK, toggleSound);
 		}
 		
+		/**
+		 * Changes the state of the button
+		 * @param	e
+		 */
 		private function toggleSound(e:MouseEvent = null):void {
 			
 			if (container.currentFrame == 1) {
@@ -86,30 +75,23 @@
 			}
 		}
 		
+		/**
+		 * Allow to perform a sound
+		 * @param	name
+		 */
 		public function playSoundByName(name:String):void {
 			
 			if (allowSound)
-				playlist[name].play();
+				galery[name].play();
 		}
 		
+		/**
+		 * Returns a Sound through a name
+		 * @param	name	String
+		 * @return	Sound
+		 */
 		public function getSoundByName(name:String):Sound {
-			
-			return playlist[name];
-		}
-		
-		public function getPlaylist():Dictionary {
-			
-			return playlist;
-		}
-		
-		/* GETTERS E SETTERS */
-		
-		public function get progress():Number {
-			return _progress;
-		}
-		
-		public function set progress(value:Number):void {
-			_progress = value;
+			return galery[name];
 		}
 	}
 }

@@ -32,8 +32,8 @@ package com.gaming.managers {
 		public var started:Boolean = false;
 		
 		/**
-		 * Construtor da classe
-		 * @param	container	MovieClip com dois frames que representem on/off
+		 * Constructor
+		 * @param	container	MovieClip with two frames that represent on/off
 		 */
 		public function MusicManager(container:MovieClip) {
 			
@@ -44,7 +44,7 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método que deve ser chamado quando o usuário clicar em jogar
+		 * Should be called when the user click the button play
 		 */
 		public function start():void {
 			
@@ -54,7 +54,7 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método que deve ser chamado quando o usuário reiniciar a aplicação, ou seja, quando ela for reencaminhada para o 1º frame.
+		 * Should be called when the user restart the application
 		 */
 		public function reStart():void {
 			
@@ -64,9 +64,9 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método utilizado para iniciar a música do aplicativo
-		 * @param	music		Sound. A música da aplicação
-		 * @param	volume		Number. Representa o volume que a música terá
+		 * Starts the application's music
+		 * @param	music		Sound. The music
+		 * @param	volume		Number. The inicial volume
 		 */
 		public function startMusicBySound(music:Sound, volume:Number = 1):void {
 			
@@ -75,19 +75,27 @@ package com.gaming.managers {
 			init();
 		}
 		
+		/**
+		 * Loads the music
+		 * @param	url	:	String with the music's path
+		 */
 		public function loadMusic(url:String):void {
 			
 			music = new Sound(new URLRequest(url));
 			music.addEventListener(Event.COMPLETE, completeHandler);
 		}
 		
+		/**
+		 * Dispatched when the music is loaded
+		 * @param	e	Event
+		 */
 		private function completeHandler(e:Event):void {
 			
 			init();
 		}
 		
 		/**
-		 * Inicializa o objeto gerenciador de músicas
+		 * Inits the musics' manager
 		 */
 		private function init():void {
 			
@@ -102,8 +110,8 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Evento disparado quando o usuário clica sobre o botão para ligar ou desligar a música
-		 * @param	e
+		 * Dispatched when the user switch the music's button
+		 * @param	e	MouseEvent
 		 */
 		private function toggleMusic(e:MouseEvent = null):void {
 			
@@ -117,7 +125,7 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método utilizado para mudar o volume
+		 * Changes the volume
 		 * @param	volume	Number
 		 */
 		private function changeVolume(volume:Number):void {
@@ -127,8 +135,8 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método que realiza a transição de volume de uma música
-		 * @param	volume
+		 * Makes the volume's transition 
+		 * @param	volume	Number
 		 */
 		private function fade(volume:Number):void {
 			
@@ -136,8 +144,8 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método que retorna o volume do objeto musicTransform
-		 * @return
+		 * Returns the volume
+		 * @return	volume	:	Number
 		 */
 		public function getVolume():Number {
 			
@@ -145,7 +153,7 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método responsável pela mudança do volume padrão da música
+		 * Changes the music's default volume
 		 * @param	value
 		 */
 		public function setVolume(value:Number = 0.5):void {
@@ -154,8 +162,7 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método que pára a música atual. 
-		 * Pouco utilizado.
+		 * Stops the current music
 		 */
 		public function stopCurrentMusic():void {
 			
@@ -164,7 +171,7 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método utilizado para trocar músicas durante a execução do aplicativo
+		 * Changes the music while the application is running
 		 * @param	s	Sound
 		 * @param	v	Number volume
 		 */
@@ -176,8 +183,8 @@ package com.gaming.managers {
 		}
 		
 		/**
-		 * Método chamado ao final da transição decorrente do método changeCurrentMusic.
-		 * Remove a música antiga e adiciona a nova.
+		 * Called at the end of the transition from the method changeCurrentMusic
+		 * Removes the old music and add a new one
 		 * @param	s	Sound
 		 * @param	v	Number volume
 		 */
