@@ -16,9 +16,7 @@ package com.gaming.audio {
 		private static var myChannel:SoundChannel = new SoundChannel();
 		//private static var myTransform:SoundTransform;
 		
-		//private static var sndMusic:Sound; 
 		private static var sndGood:Sound;
-		//private static var sndDrop:Sound;
 		private static var sndClick:Sound; 
 		private static var sndBad:Sound;
 		private static var sndKey:Sound;
