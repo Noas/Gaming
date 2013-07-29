@@ -64,9 +64,13 @@ package com.gaming.managers {
 		 */
 		public function getImagesByName(names:Array):Array {
 			
+			names.sort();
+			
 			var images:Array = new Array();
 			for (var i:int = 0; i < names.length; i++) 
 				images.push(getImageByName(names[i]));
+			
+			return images;
 		}
 	}
 }
