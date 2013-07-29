@@ -56,5 +56,17 @@ package com.gaming.managers {
 			var img:Bitmap = new Bitmap(galery[nome].content.bitmapData);
 			return img;
 		}
+		
+		/**
+		 * 
+		 * @param	names	:	Array with the names
+		 * @return	An Array with Bitmaps
+		 */
+		public function getImagesByName(names:Array):Array {
+			
+			var images:Array = new Array();
+			for (var i:int = 0; i < names.length; i++) 
+				images.push(getImageByName(names[i]));
+		}
 	}
 }
