@@ -93,6 +93,7 @@ package com.gaming.core {
 		public function completeHandler(e:Event):void {
 			
 			loaded++;
+			
 			if (total == loaded)
 				dispatchEvent(new Event(LoadingEvent.LOAD_COMPLETE));
 		}

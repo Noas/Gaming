@@ -52,5 +52,21 @@ package com.gaming.managers {
 			
 			return galery[name].content;
 		}
+		
+		/**
+		 * 
+		 * @param	names	:	Array with the names
+		 * @return	An Array with SWFs
+		 */
+		public function getSWFsByName(names:Array):Array {
+			
+			names.sort();
+			
+			var swfs:Array = new Array();
+			for (var i:int = 0; i < names.length; i++) 
+				swfs.push(getSWFByName(names[i]));
+			
+			return swfs;
+		}
 	}
 }
