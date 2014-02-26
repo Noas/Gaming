@@ -79,9 +79,9 @@
 		 * Allow to perform a sound
 		 * @param	name
 		 */
-		public function playSoundByName(name:String):void {
+		public function playSoundByName(name:String, blocSound:Boolean=false):void {
 			
-			if (allowSound)
+			if (allowSound || blocSound)
 				galery[name].play();
 		}
 		
