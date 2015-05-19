@@ -76,10 +76,21 @@
 		}
 		
 		/**
+		 * 
+		 * @param	sound
+		 * @param	blocSound
+		 */
+		public function playSound(sound:Sound, blocSound:Boolean = false):void
+		{
+			if (allowSound || blocSound)
+				sound.play();
+		}
+		
+		/**
 		 * Allow to perform a sound
 		 * @param	name
 		 */
-		public function playSoundByName(name:String, blocSound:Boolean=false):void {
+		public function playSoundByName(name:String, blocSound:Boolean = false):void {
 			
 			if (allowSound || blocSound)
 				galery[name].play();

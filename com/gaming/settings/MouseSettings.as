@@ -18,10 +18,8 @@
 			super();
 		}
 		
-		public static function settings(movie:MovieClip, kind:String = "normal"):void {
+		public static function settings(movie:MovieClip, kind:String = "normal", dragable:Boolean = false):void {
 			
-			movie.a = movie.x;
-			movie.b = movie.y;
 			movie.buttonMode = true;
 			movie.mouseChildren = false;
 			
@@ -34,6 +32,13 @@
 				
 				movie.addEventListener(MouseEvent.ROLL_OVER, approach);
 				movie.addEventListener(MouseEvent.ROLL_OUT, moveBack);
+				
+			} 
+			
+			if (dragable) 
+			{	
+				movie.a = movie.x;
+				movie.b = movie.y;
 			}
 		}
 		

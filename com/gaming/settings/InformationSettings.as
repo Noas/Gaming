@@ -13,12 +13,23 @@ package com.gaming.settings {
 		private var help:MovieClip;
 		private var informations:MovieClip;
 		private var xml:XML;
+		private var type:String;
 		
-		public function InformationSettings(help:MovieClip, informations:MovieClip, xml:XML) {
+		/**
+		 * Use when the box of informations should apper, not translate (positions)
+		 */
+		public const APPEAR:String = "appear";
+		/**
+		 * Use when the box of informations should move, not apper
+		 */
+		public const TRANSITION:String = "transition";
+		
+		public function InformationSettings(help:MovieClip, informations:MovieClip, xml:XML, type:String = "transition") {
 			
 			this.help = help;
 			this.informations = informations;
 			this.xml = xml;
+			this.type = type;
 			
 			setHelp();
 			setInformation();

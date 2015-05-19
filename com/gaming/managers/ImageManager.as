@@ -41,7 +41,7 @@ package com.gaming.managers {
 				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, completeHandler);
 				loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, progressHandler);
 				loader.load(new URLRequest((path is Array ? path[i] : path) + names[i] + ext));
-				
+				//trace("image: ", (path is Array ? path[i] : path) + names[i] + ext);
 				galery[names[i]] = loader;
 			}
 		}
